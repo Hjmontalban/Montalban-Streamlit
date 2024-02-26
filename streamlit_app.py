@@ -42,38 +42,36 @@ def app():
             verbose=0, warm_start=False)
     else:
         clf = BernoulliNB()
+if st.button('Start'):
+    df = pd.read_csv(r"C:\Users\MSI\Documents\3rd Year\3rd Year 2nd Sem\CCS 229 IS\Humphrey\Montalban Feb 17,2024 Symbols.csv", header=None)
 
-    if st.button('Start'):
-       df = pd.read_csv(r"C:\Users\MSI\Documents\3rd Year\3rd Year 2nd Sem\CCS 229 IS\Humphrey\Montalban Feb 17,2024 Symbols.csv", header=None)
+    # display the dataset
+    st.header("Dataset")
+    st.dataframe(df, use_container_width=True) 
 
-        # st.dataframe(df, use_container_width=True)  
-        
-        # display the dataset
-        st.header("Dataset")
-        st.dataframe(df, use_container_width=True) 
+    #load the data and the labels
+    X = df.values[:,0:-1]
+    y = df.values[:,-1]    
 
-        #load the data and the labels
-        X = df.values[:,0:-1]
-        y = df.values[:,-1]    
+    st.header('Images')
+    # display the images 
+    fig, axs = plt.subplots(4, 10, figsize=(20, 8))
 
-        st.header('Images')
-        # display the images 
-        fig, axs = plt.subplots(4, 10, figsize=(20, 8))
+    # Iterate over the images and labels
+    for index, (image, label) in enumerate(zip(X, y)):
+        # Get the corresponding axes object
+        ax = axs.flat[index]
 
-        # Iterate over the images and labels
-        for index, (image, label) in enumerate(zip(X, y)):
-            # Get the corresponding axes object
-            ax = axs.flat[index]
+        # Display the image
+        ax.imshow(np.reshape(image, (8, 8)), cmap='binary')
 
-            # Display the image
-            ax.imshow(np.reshape(image, (8, 8)), cmap='binary')
+        # Add the title
+        ax.set_title(f'Training: {label}', fontsize=10)
 
-            # Add the title
-            ax.set_title(f'Training: {label}', fontsize=10)
+    # Tighten layout to avoid overlapping
+    plt.tight_layout()
+    st.pyplot(fig)
 
-        # Tighten layout to avoid overlapping
-        plt.tight_layout()
-        st.pyplot(fig)
         
         # Split the dataset into training and testing sets
         X_train, X_test, y_train, y_test = train_test_split(X, y, \
