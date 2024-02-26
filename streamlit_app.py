@@ -42,40 +42,39 @@ def app():
             verbose=0, warm_start=False)
     else:
         clf = BernoulliNB()
-if st.button('Start'):
-    df = pd.read_csv(r"C:\Users\MSI\Documents\3rd Year\3rd Year 2nd Sem\CCS 229 IS\Humphrey\Montalban Feb 17,2024 Symbols.csv", header=None)
 
-    # display the dataset
-    st.header("Dataset")
-    st.dataframe(df, use_container_width=True) 
+    if st.button('Start'):
+        df = pd.read_csv(r"C:\Users\MSI\Documents\3rd Year\3rd Year 2nd Sem\CCS 229 IS\Humphrey\Montalban Feb 17,2024 Symbols.csv", header=None)
 
-    #load the data and the labels
-    X = df.values[:,0:-1]
-    y = df.values[:,-1]    
+        # display the dataset
+        st.header("Dataset")
+        st.dataframe(df, use_container_width=True) 
 
-    st.header('Images')
-    # display the images 
-    fig, axs = plt.subplots(4, 10, figsize=(20, 8))
+        # load the data and the labels
+        X = df.values[:,0:-1]
+        y = df.values[:,-1]    
 
-    # Iterate over the images and labels
-    for index, (image, label) in enumerate(zip(X, y)):
-        # Get the corresponding axes object
-        ax = axs.flat[index]
+        st.header('Images')
+        # display the images 
+        fig, axs = plt.subplots(4, 10, figsize=(20, 8))
 
-        # Display the image
-        ax.imshow(np.reshape(image, (8, 8)), cmap='binary')
+        # Iterate over the images and labels
+        for index, (image, label) in enumerate(zip(X, y)):
+            # Get the corresponding axes object
+            ax = axs.flat[index]
 
-        # Add the title
-        ax.set_title(f'Training: {label}', fontsize=10)
+            # Display the image
+            ax.imshow(np.reshape(image, (8, 8)), cmap='binary')
 
-    # Tighten layout to avoid overlapping
-    plt.tight_layout()
-    st.pyplot(fig)
+            # Add the title
+            ax.set_title(f'Training: {label}', fontsize=10)
 
-        
+        # Tighten layout to avoid overlapping
+        plt.tight_layout()
+        st.pyplot(fig)
+
         # Split the dataset into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(X, y, \
-            test_size=0.2, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         clf.fit(X_train,y_train)
         y_test_pred = clf.predict(X_test)
