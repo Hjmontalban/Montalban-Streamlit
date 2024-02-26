@@ -18,7 +18,7 @@ def app():
     st.subheader('Humphrey John M. Montalban.,BSCS 3B AI')
     
     st.write('Dataset description:'
-             'The Smiley Dataset comprises a wide range of examples, including text and images, that are all infused with subtle emotional overtones. The collection consists of a range of happy faces that represent a variety of feelings, from happiness and contentment to grief and rage. The essence of human expression is captured in these photos, which are an invaluable resource for training machine learning models to recognize various face expressions. ')
+             'A symbol dataset is usually made up of a grouping of characters or symbols that are frequently arranged in an ordered manner. These symbols may consist of special characters, numerals, letters, and punctuation. Each symbol's Unicode code point, representation in different fonts or styles, usage frequency, and linguistic characteristics are just a few examples of the metadata or annotations that could be included in the dataset. ')
 
     st.write('Number of features: 64')
     text = """Feature representation: Binary values (1 or 0) representing the 8x8 pixels of an image.
@@ -44,7 +44,7 @@ def app():
         clf = BernoulliNB()
 
     if st.button('Start'):
-        df = pd.read_csv('Arendain_Smiley.csv', header=None)
+        df = pd.read_csv('Montalban Feb 17.2024.csv', header=None)
         # st.dataframe(df, use_container_width=True)  
         
         # display the dataset
