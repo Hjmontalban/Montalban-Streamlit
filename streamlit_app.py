@@ -44,7 +44,7 @@ def app():
         clf = BernoulliNB()
 
     if st.button('Start'):
-        df = pd.read_csv(r"C:\Users\MSI`\Documents\3rd Year\3rd Year 2nd Sem\CCS 229 IS\Humphrey\Montalban Feb 17,2024 Symbols.csv", header=None)
+       df_mint = pd.read_csv('Montalban Feb 17,2024 Symbols.csv')
 
         # display the dataset
         st.header("Dataset")
