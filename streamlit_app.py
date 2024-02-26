@@ -1,4 +1,4 @@
-#Input the relevant libraries
+# Input the relevant libraries
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -18,7 +18,7 @@ def app():
     st.subheader('Humphrey John M. Montalban.,BSCS 3B AI')
     
     st.write('Dataset description:'
-             'A symbol dataset is usually made up of a grouping of characters or symbols that are frequently arranged in an ordered manner. These symbols may consist of special characters, numerals, letters, and punctuation. Each symbol's Unicode code point, representation in different fonts or styles, usage frequency, and linguistic characteristics are just a few examples of the metadata or annotations that could be included in the dataset. ')
+             'A symbol dataset is usually made up of a grouping of characters or symbols that are frequently arranged in an ordered manner. These symbols may consist of special characters, numerals, letters, and punctuation. Each symbol\'s Unicode code point, representation in different fonts or styles, usage frequency, and linguistic characteristics are just a few examples of the metadata or annotations that could be included in the dataset.')
 
     st.write('Number of features: 64')
     text = """Feature representation: Binary values (1 or 0) representing the 8x8 pixels of an image.
@@ -67,8 +67,8 @@ def app():
             # Display the image
             ax.imshow(np.reshape(image, (8, 8)), cmap='binary')
 
-        # Add the title
-        ax.set_title(f'Training: {label}', fontsize=10)
+            # Add the title
+            ax.set_title(f'Training: {label}', fontsize=10)
 
         # Tighten layout to avoid overlapping
         plt.tight_layout()
@@ -88,6 +88,6 @@ def app():
         # Test the classifier on the testing set
         st.text(classification_report(y_test, y_test_pred))
     
-#run the app
+# Run the app
 if __name__ == "__main__":
     app()
